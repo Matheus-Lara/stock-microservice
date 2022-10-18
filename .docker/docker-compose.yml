@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  stock-webserver:
+  stocks:
     build: ./bin/webserver
-    container_name: 'stock-webserver'
+    container_name: 'stocks'
     restart: 'always'
     ports:
       - "${HOST_MACHINE_UNSECURE_HOST_BIND-127.0.0.1}:${HOST_MACHINE_UNSECURE_HOST_PORT}:80"

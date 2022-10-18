@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class StockController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(string $id) {
 		$stock = Stock::where('productId', $id)->get();
 		if ($stock) {
@@ -23,14 +18,6 @@ class StockController extends Controller
 		}
 	}
 
-    /**
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request) {
 		$data = $request->all();
 		$client = new Client();
@@ -61,20 +48,6 @@ class StockController extends Controller
 		return response()->json($stock, 201);
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Models\Stock  $stock
-	 * @return \Illuminate\Http\Response
-	 */
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\Stock  $stock
-	 * @return \Illuminate\Http\Response
-	 */
 	public function update(int $id, Request $request)
 	{
 		$stock = Stock::find($id);
@@ -86,13 +59,7 @@ class StockController extends Controller
 		}
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Models\Stock  $stock
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(Request $request, int $id)
+	public function destroy(int $id)
 	{
 		$stock = Stock::find($id);
 		if ($stock) {
@@ -103,12 +70,6 @@ class StockController extends Controller
 		}
 	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
     public function edit(int $id) {
 		$stock = Stock::find($id);
 		if ($stock) {
