@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/', [App\Http\Controllers\StockController::class, 'store']);
+Route::get('/product/{productId}', [App\Http\Controllers\StockController::class, 'index']);
+Route::get('/{id}', [App\Http\Controllers\StockController::class, 'edit']);
+Route::put('/{id}', [App\Http\Controllers\StockController::class, 'update']);
+Route::delete('/{id}', [App\Http\Controllers\StockController::class, 'destroy']);
+
+Route::fallback(function() {
+	return response()->json(['message' => 'Not Found.'], 404);
+})->name('api.fallback.404');
